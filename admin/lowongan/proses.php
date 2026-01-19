@@ -6,6 +6,7 @@ if (isset($_POST['tambah'])) {
     $judul = $_POST['judul'];
     $bidang_pekerjaan_id = $_POST['bidang_pekerjaan_id'];
     $tanggal_buka = $_POST['tanggal_buka'];
+    $deskripsi = $_POST['deskripsi'];
     $tanggal_berakhir = $_POST['tanggal_berakhir'];
     $persyaratan = $_POST['persyaratan'];
 
@@ -17,6 +18,9 @@ if (isset($_POST['tambah'])) {
     }
     if (empty($bidang_pekerjaan_id)) {
         $errors[] = "bidang pekerjaan harus diisi.";
+    }
+    if (empty($deskripsi)) {
+        $errors[] = "deskripsi harus diisi.";
     }
     
     if (empty($tanggal_buka)) {
@@ -34,8 +38,8 @@ if (isset($_POST['tambah'])) {
     
 
     if (empty($errors)) {
-        $query = "INSERT INTO lowongan_kerja (judul, bidang_pekerjaan_id, tanggal_buka, tanggal_berakhir, persyaratan) 
-                      VALUES ('$judul', $bidang_pekerjaan_id, '$tanggal_buka', '$tanggal_berakhir', '$persyaratan')";
+        $query = "INSERT INTO lowongan_kerja (judul, bidang_pekerjaan_id, tanggal_buka, deskripsi, tanggal_berakhir, persyaratan) 
+                      VALUES ('$judul', $bidang_pekerjaan_id, '$tanggal_buka', '$deskripsi', '$tanggal_berakhir', '$persyaratan')";
             $result = mysqli_query($koneksi, $query);
 
             if ($result) {

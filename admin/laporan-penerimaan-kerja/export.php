@@ -245,6 +245,8 @@ try {
 
 
         $result = mysqli_query($koneksi, $query);
+            $today = date('Y-m-d');
+
 if (!function_exists('format_date')) {
               function format_date($date)
               {
@@ -269,7 +271,7 @@ if (!function_exists('format_date')) {
                 <td><?= format_date($row['tanggal_berakhir']); ?></td>
                 <td><?= $row['jumlah_pelamar']; ?></td>
                 <td>
-                  <?php if ($row['tanggal_buka'] >= $row['tanggal_berakhir']): ?>
+                  <?php if ($row['tanggal_berakhir'] < $today): ?>
                     <span>Ditutup</span>
                   <?php else: ?>
                     <span>Dibuka</span>

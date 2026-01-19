@@ -179,7 +179,7 @@ $query_list_insentif = mysqli_query($koneksi, "SELECT * FROM insentif WHERE peng
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Tunjangan (Rp)</label>
                             <div class="col-sm-8">
-                                <input type="number" name="tunjangan" id="input_tunjangan" class="form-control" value="<?= $row['tunjangan'] ?>" required>
+                                <input type="number" name="tunjangan" id="input_tunjangan" class="form-control" value="<?= $row['tunjangan'] ?>" readonly>
                             </div>
                         </div>
 

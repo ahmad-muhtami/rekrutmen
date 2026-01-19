@@ -174,7 +174,7 @@ try {
 
 
     <br>
-    <h2 style="text-align: center; font-size:16px;">Laporan Kinerja Rekrutmen
+    <h2 style="text-align: center; font-size:16px;">Laporan Rekrutmen & Seleksi Karyawan
     </h2>
     <br>
     <table class="table">

@@ -53,13 +53,15 @@ if (isset($_POST['update'])) {
                 ('$pelamar_id', '$bidang_pekerjaan_id', '$nomor_telepon')
             ";
             mysqli_query($koneksi, $queryInsertKaryawan);
+        }
 
-            $queryUpdateRole = "
+        $queryUpdateRole = "
                 UPDATE pengguna 
-                    SET role = 'karyawan',
+                    SET role = 'karyawan'
                 WHERE id = '$pelamar_id'
             ";
-        }
+
+        mysqli_query($koneksi, $queryUpdateRole);
     }
 
     if ($resultUpdate) {

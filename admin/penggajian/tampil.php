@@ -87,17 +87,28 @@ while ($karyawan = mysqli_fetch_assoc($queryKaryawan)) {
               <th>Tunjangan</th>
               <th>Total Insentif</th>
               <th>Total Gaji</th>
-<?php if ($_SESSION['role'] == 'admin') : ?>
+              <?php if ($_SESSION['role'] == 'admin') : ?>
 
-              <th style="width: 150px;" class="not-export-col">Aksi</th>
-        <?php endif; ?>
+                <th style="width: 150px;" class="not-export-col">Aksi</th>
+              <?php endif; ?>
 
             </tr>
           </thead>
           <tbody>
             <?php
             $no = 1;
-            $query = "
+            if ($_SESSION['role'] == 'admin') {
+              $query = "
+  SELECT 
+    penggajihan.*,
+    pengguna.nama AS nama_karyawan
+  FROM penggajihan
+  JOIN karyawan ON penggajihan.karyawan_id = karyawan.id
+  JOIN pengguna ON karyawan.pengguna_id = pengguna.id
+  ORDER BY penggajihan.periode DESC
+";
+            }else if($_SESSION['role'] == 'karyawan'){
+              $query = "
   SELECT 
     penggajihan.*,
     pengguna.nama AS nama_karyawan
@@ -107,6 +118,7 @@ while ($karyawan = mysqli_fetch_assoc($queryKaryawan)) {
   WHERE karyawan_id = '$kr_id'
   ORDER BY penggajihan.periode DESC
 ";
+            }
             $result = mysqli_query($koneksi, $query);
 
 
@@ -149,13 +161,13 @@ while ($karyawan = mysqli_fetch_assoc($queryKaryawan)) {
                 <td>Rp <?= number_format($db_tunjangan, 0, ',', '.'); ?></td>
                 <td>Rp <?= number_format($db_insentif, 0, ',', '.'); ?></td>
                 <td style="font-weight: bold;">Rp <?= number_format($db_total, 0, ',', '.'); ?></td>
-<?php if ($_SESSION['role'] == 'admin') : ?>
-                <td class="not-export-col">
-                  <a href="penggajian.php?page=ubah&id=<?= $row['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
-                  <a href="penggajian.php?page=hapus&id=<?= $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data')">Hapus</a>
+                <?php if ($_SESSION['role'] == 'admin') : ?>
+                  <td class="not-export-col">
+                    <a href="penggajian.php?page=ubah&id=<?= $row['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="penggajian.php?page=hapus&id=<?= $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data')">Hapus</a>
 
-                </td>
-        <?php endif; ?>
+                  </td>
+                <?php endif; ?>
 
               </tr>
             <?php } ?>

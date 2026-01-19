@@ -78,67 +78,74 @@ if ($rl == 'pelamar') {
               <?php for ($d = 1; $d <= $jumlah_hari; $d++): ?>
                 <th><?= $d ?></th>
               <?php endfor; ?>
-<?php if ($_SESSION['role'] == 'admin') : ?>
-  <th style="vertical-align: middle; min-width: 100px;" class="not-export-col">Aksi</th>
-  <?php endif; ?>
+              <?php if ($_SESSION['role'] == 'admin') : ?>
+                <th style="vertical-align: middle; min-width: 100px;" class="not-export-col">Aksi</th>
+              <?php endif; ?>
             </tr>
           </thead>
           <tbody>
-            <?php
-            $no = 1;
-            $query_karyawan = "SELECT karyawan.*, pengguna.nama, bidang_pekerjaan.bidang_pekerjaan AS jabatan FROM karyawan JOIN pengguna ON karyawan.pengguna_id = pengguna.id JOIN bidang_pekerjaan ON karyawan.bidang_pekerjaan_id = bidang_pekerjaan.id WHERE status='aktif' ORDER BY nama ASC";
-            $result_karyawan = mysqli_query($koneksi, $query_karyawan);
+  <?php
+  $no = 1;
+  $query_karyawan = "SELECT karyawan.*, pengguna.nama, bidang_pekerjaan.bidang_pekerjaan AS jabatan FROM karyawan JOIN pengguna ON karyawan.pengguna_id = pengguna.id JOIN bidang_pekerjaan ON karyawan.bidang_pekerjaan_id = bidang_pekerjaan.id WHERE status='aktif' ORDER BY nama ASC";
+  $result_karyawan = mysqli_query($koneksi, $query_karyawan);
 
-            while ($karyawan = mysqli_fetch_assoc($result_karyawan)) {
-              $id_karyawan = $karyawan['id'];
-            ?>
-              <tr>
-                <td class="text-center"><?= $no++; ?></td>
-                <td><?= $karyawan['nama']; ?> <span class="d-block badge badge-success" style="width: max-content;"><?= $karyawan['jabatan'] ?></span></td>
+  while ($karyawan = mysqli_fetch_assoc($result_karyawan)) {
+    $id_karyawan = $karyawan['id'];
+  ?>
+    <tr>
+      <td class="text-center"><?= $no++; ?></td>
+      <td><?= $karyawan['nama']; ?> <span class="d-block badge badge-success" style="width: max-content;"><?= $karyawan['jabatan'] ?></span></td>
 
-                <?php for ($d = 1; $d <= $jumlah_hari; $d++): ?>
-                  <?php
-                  if (isset($list_shift[$id_karyawan][$d])) {
-                    $data_shift = $list_shift[$id_karyawan][$d];
-                    $jenis = $data_shift['jenis_shift'];
-                    $jam = $data_shift['jam_kerja'];
+      <?php for ($d = 1; $d <= $jumlah_hari; $d++): ?>
+        <?php
+        // Inisialisasi variabel agar aman (opsional tapi disarankan)
+        $bg_class = '';
+        $konten = '-';
+        $ket = ''; 
 
-                    if ($jenis == 'Libur') {
-                      $bg_class = 'bg-success text-white';
-                      $konten = 'Libur';
-                      $ket = '';
-                    } elseif ($jenis == 'Lembur') {
-                      $bg_class = 'bg-primary text-white';
-                      $ket = 'Lembur';
-                      $konten = $jam;
-                    } else {
-                      $bg_class = 'bg-white text-black';
-                      $ket = $jenis;
-                      $konten = $jam;
-                    }
-                  } else {
-                    $bg_class = '';
-                    $konten = '-';
-                  }
-                  ?>
+        if (isset($list_shift[$id_karyawan][$d])) {
+          $data_shift = $list_shift[$id_karyawan][$d];
+          $jenis = $data_shift['jenis_shift'];
+          $jam = $data_shift['jam_kerja'];
 
-                  <td class="text-center <?= $bg_class ?>" style="font-size: 12px; white-space: nowrap; vertical-align: middle;">
-                    <span class="d-block"><?= $ket ?></span>
-                    <?= $konten ?>
-                  </td>
+          if ($jenis == 'Libur') {
+            $bg_class = 'bg-success text-white';
+            $konten = 'Libur';
+            $ket = '';
+          } elseif ($jenis == 'Lembur') {
+            $bg_class = 'bg-primary text-white';
+            $ket = 'Lembur';
+            $konten = $jam;
+          } else {
+            $bg_class = 'bg-white text-black';
+            $ket = $jenis;
+            $konten = $jam;
+          }
+        } else {
+          
+          $bg_class = '';
+          $konten = '-';
+          $ket = ''; 
+        }
+        ?>
 
-                <?php endfor; ?>
-<?php if ($_SESSION['role'] == 'admin') : ?>
-                <td class="text-center not-export-col">
-                  <a href="jadwal.php?page=ubah&id=<?= $id_karyawan; ?>" class="btn btn-sm btn-warning">Edit</a>
-                  <a href="jadwal.php?page=hapus&id=<?= $id_karyawan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data')">Hapus</a>
-                </td>
-        <?php endif; ?>
+        <td class="text-center <?= $bg_class ?>" style="font-size: 12px; white-space: nowrap; vertical-align: middle;">
+          <span class="d-block"><?= $ket ?></span>
+          <?= $konten ?>
+        </td>
+
+      <?php endfor; ?>
+      <?php if ($_SESSION['role'] == 'admin') : ?>
+        <td class="text-center not-export-col">
+          <a href="jadwal.php?page=ubah&id=<?= $id_karyawan; ?>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="jadwal.php?page=hapus&id=<?= $id_karyawan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data')">Hapus</a>
+        </td>
+      <?php endif; ?>
 
 
-              </tr>
-            <?php } ?>
-          </tbody>
+    </tr>
+  <?php } ?>
+</tbody>
         </table>
       </div>
     </div>
