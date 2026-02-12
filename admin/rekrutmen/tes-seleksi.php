@@ -110,7 +110,7 @@ if($resultJawaban && mysqli_num_rows($resultJawaban) > 0){
 
     <?php endwhile; ?>
 
-    <button name="kirim" value="kirim" class="btn btn-dark w-100 mx-3">Kirim Jawaban</button>
+    <button name="kirim" value="kirim" class="btn btn-primary w-100 mx-3">Kirim Jawaban</button>
 
   </form>
 

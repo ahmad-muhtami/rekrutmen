@@ -88,7 +88,7 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                    <button name="update" value="update" class="btn btn-dark">Ubah</button>
+                    <button name="update" value="update" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>

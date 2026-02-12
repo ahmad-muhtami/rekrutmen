@@ -99,7 +99,7 @@ if (isset($_GET['id'])) {
 
           <input type="hidden" name="id" value="<?= $row['id']; ?>">
 
-          <button name="update" value="update" class="btn btn-primary">Ubah</button>
+          <button name="update" value="update" class="btn btn-primary">Simpan</button>
         </form>
 
       </div>

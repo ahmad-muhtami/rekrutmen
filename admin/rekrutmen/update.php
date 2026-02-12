@@ -52,7 +52,7 @@ if (!function_exists('format_date')) {
 ?>
 <div class="container-fluid bg-white h-100 pt-4">
 
-    <h1 class="h3 mb-4 text-gray-800">Proses Rekrutmen</h1>
+    <h1 class="h3 mb-4 text-gray-800">Ubah Data Rekrutmen & Seleksi</h1>
 
     <div class="card card-body">
         <div class="row">
@@ -194,7 +194,7 @@ if (!function_exists('format_date')) {
                             </div>
                         </div>
                     </div>
-                    <button name="update" value="update" class="btn btn-dark mt-3">Simpan</button>
+                    <button name="update" value="update" class="btn btn-primary mt-3">Simpan</button>
                 </form>
             </div>
         </div>

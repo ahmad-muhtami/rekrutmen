@@ -164,7 +164,7 @@ if (!function_exists('format_date')) {
 
                     <input type="hidden" name="lowongan_id" value="<?= $row['id']; ?>">
 
-                    <button name="proses" value="proses" class="btn btn-dark d-block w-100 mt-3">Simpan</button>
+                    <button name="proses" value="proses" class="btn btn-primary d-block w-100 mt-3">Simpan</button>
                 </form>
             </div>
         </div>

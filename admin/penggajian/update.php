@@ -267,7 +267,7 @@ $query_list_insentif = mysqli_query($koneksi, "SELECT * FROM insentif WHERE peng
 
 
                         <div class="mt-4">
-                            <button type="submit" name="simpan_perubahan" class="btn btn-primary btn-block">Simpan Data Gaji</button>
+                            <button type="submit" name="simpan_perubahan" class="btn btn-primary btn-block">Simpan</button>
                         </div>
 
                     </form>

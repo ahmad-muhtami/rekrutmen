@@ -62,7 +62,7 @@ ini_set('date.timezone', 'Asia/Makassar');
               </div>
             </div>
           </div>
-          <button name="tambah" value="tambah" class="btn btn-dark">Simpan</button>
+          <button name="tambah" value="tambah" class="btn btn-primary">Simpan</button>
         </form>
 
 

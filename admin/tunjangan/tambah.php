@@ -3,7 +3,7 @@
   ?>
  <div class="container-fluid bg-white h-100 pt-4">
 
-   <h1 class="h3 mb-4 text-gray-800">Tambah Jenis Tunjangan</h1>
+   <h1 class="h3 mb-4 text-gray-800">Tambah Data Tunjangan</h1>
 
    <div class="card card-body">
      <div class="row">

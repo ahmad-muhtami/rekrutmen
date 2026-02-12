@@ -2,7 +2,7 @@
 
 
   <div class="d-flex align-items-center justify-content-between mb-4">
-    <h1 class="h4 text-gray-800">Data Jenis Tunjangan</h1>
+    <h1 class="h4 text-gray-800">Data Tunjangan</h1>
     <a href="tunjangan.php?page=tambah" class="btn btn-dark">Tambah</a>
 
   </div>

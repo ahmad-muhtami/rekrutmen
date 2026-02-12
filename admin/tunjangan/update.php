@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
 
     </div>
 
-    <button name="ubah" value="ubah" class="btn btn-warning">Simpan Perubahan</button>
+    <button name="ubah" value="ubah" class="btn btn-primary">Simpan</button>
 </form>
 
     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jan 2026 pada 09.08
+-- Waktu pembuatan: 12 Feb 2026 pada 16.42
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -133,7 +133,7 @@ INSERT INTO `absensi` (`id`, `shift_id`, `waktu_absen`, `keterangan`, `catatan`)
 (108, 260, '2026-01-31 14:01:00', 'Sakit', ''),
 (109, 291, '2026-01-31 14:01:00', 'Hadir', ''),
 (110, 229, '2026-01-31 14:01:00', 'Hadir', ''),
-(111, 198, '2026-01-31 14:01:00', 'Hadir', '');
+(113, 198, '2026-01-31 12:02:00', 'Hadir', '');
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,6 @@ CREATE TABLE `insentif` (
 --
 
 INSERT INTO `insentif` (`id`, `penggajihan_id`, `tanggal`, `total`, `keterangan`) VALUES
-(5, 12, '2026-01-19', 30000.00, 'Lembur'),
 (6, 15, '2026-01-31', 125000.00, 'Kehadiran Lengkap');
 
 -- --------------------------------------------------------
@@ -312,10 +311,10 @@ CREATE TABLE `penggajihan` (
 --
 
 INSERT INTO `penggajihan` (`id`, `karyawan_id`, `periode`, `total_gaji_pokok`, `tunjangan`, `total_insentif`, `total_gaji`) VALUES
-(12, 11, '2026-01-01', 3000000.00, 0.00, 30000.00, 3030000.00),
 (13, 12, '2026-01-01', 3000000.00, 1250000.00, 0.00, 4250000.00),
 (14, 13, '2026-01-01', 3000000.00, 450000.00, 0.00, 3450000.00),
-(15, 14, '2026-01-01', 3000000.00, 750000.00, 125000.00, 3875000.00);
+(15, 14, '2026-01-01', 3000000.00, 750000.00, 125000.00, 3875000.00),
+(16, 11, '2026-01-01', 3000000.00, 0.00, 0.00, 3000000.00);
 
 -- --------------------------------------------------------
 
@@ -345,7 +344,8 @@ INSERT INTO `pengguna` (`id`, `nama`, `username`, `password`, `nomor_telepon`, `
 (15, 'Farhan', 'farhan', '827ccb0eea8a706c4c34a16891f84e7b', '0894637285632', 'pelamar'),
 (16, 'Siti Rahmah', 'rahmah', '827ccb0eea8a706c4c34a16891f84e7b', '0877325322323', 'pelamar'),
 (17, 'agung', 'agung', '827ccb0eea8a706c4c34a16891f84e7b', '08926732621', 'pelamar'),
-(20, 'Muhammad Ramadhan', 'ramadhan', '827ccb0eea8a706c4c34a16891f84e7b', '089973423323', 'pelamar');
+(20, 'Muhammad Ramadhan', 'ramadhan', '827ccb0eea8a706c4c34a16891f84e7b', '089973423323', 'pelamar'),
+(21, 'Rizki', 'riski', '827ccb0eea8a706c4c34a16891f84e7b', '0814656214124', 'pelamar');
 
 -- --------------------------------------------------------
 
@@ -424,7 +424,7 @@ INSERT INTO `rekrutmen` (`id`, `pelamar_id`, `lowongan_id`, `no_ktp`, `tempat_la
 (7, 15, 7, '353726752127', 'Martapura', '2002-04-13', '23', 'Laki-laki', 'Islam', 'Banjarmasin', 'farhan@gmail.com', '1768802736_contoh-cv1.pdf', 'menunggu', NULL, '2026-01-19', '2026-01-19'),
 (8, 16, 6, '2363263632632', 'Martapura', '2004-12-22', '21', 'Perempuan', 'Islam', 'Martapura, Sungai Besar', 'rahmah@gmail.com', '1768802885_contoh-cv2.pdf', 'diproses', 'Lamaran anda sedang diproses oleh tim kami', '2026-01-19', '2026-01-19'),
 (9, 17, 7, '325325325325', 'Banjarmasin', '1999-12-03', '27', 'Laki-laki', 'Islam', 'Guntung Manggis, Banjarbaru', 'agung@gmail.com', '1768803072_contoh-cv1.pdf', 'diproses', 'Lamaran anda sedang diproses oleh tim kami', '2026-01-19', '2026-01-19'),
-(10, 20, 7, '242365732573', 'Banjarmasin', '2001-02-20', '24', 'Laki-laki', 'Islam', 'Sungai Sipai, Martapura', 'ramadhan@gmail.com', '1768808583_contoh-cv1.pdf', 'menunggu', NULL, '2026-01-19', '2026-01-19');
+(10, 20, 7, '242365732573', 'Banjarmasin', '2001-02-20', '24', 'Laki-laki', 'Islam', 'Sungai Sipai, Martapura', 'ramadhan@gmail.com', '1768808583_contoh-cv1.pdf', 'menunggu', 'Menunggu', '2026-01-19', '2026-01-31');
 
 -- --------------------------------------------------------
 
@@ -697,13 +697,13 @@ ALTER TABLE `tunjangan`
 -- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT untuk tabel `bidang_pekerjaan`
 --
 ALTER TABLE `bidang_pekerjaan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `insentif`
@@ -721,7 +721,7 @@ ALTER TABLE `jawaban`
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `lampiran`
@@ -733,31 +733,31 @@ ALTER TABLE `lampiran`
 -- AUTO_INCREMENT untuk tabel `lowongan_kerja`
 --
 ALTER TABLE `lowongan_kerja`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `penggajihan`
 --
 ALTER TABLE `penggajihan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `pertanyaan`
 --
 ALTER TABLE `pertanyaan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `rekrutmen`
 --
 ALTER TABLE `rekrutmen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `shift`
@@ -769,7 +769,7 @@ ALTER TABLE `shift`
 -- AUTO_INCREMENT untuk tabel `tunjangan`
 --
 ALTER TABLE `tunjangan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
